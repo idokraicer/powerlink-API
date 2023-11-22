@@ -1,9 +1,3 @@
-var Type;
-(function (Type) {
-    Type[(Type["CUSTOMER"] = 1)] = "CUSTOMER";
-    Type[(Type["CONTACT"] = 2)] = "CONTACT";
-})(Type || (Type = {}));
-
 class Fireberry {
     constructor(apiToken) {
         this.apiToken = apiToken;
