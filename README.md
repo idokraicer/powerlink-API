@@ -52,7 +52,7 @@ fb.object(Type.ACCOUNT).getById("xxxx-xxxxx-xxxxx-xxxx");
 //Create new task
 fb.object(Type.TASK).create({ subject: "New Task" });
 
-//Delete customer object 1004 record
+//Delete custom object 1004 record
 fb.object("1004").delete("xxxx-xxxxx-xxxxx-xxxx");
 ```
 
