@@ -20,7 +20,7 @@ Instructions on how to integrate this JavaScript class into a project:
 git clone https://github.com/IdanSHR/powerlink-API.git
 
 # Navigate to the cloned directory
-cd powerlink-js-api-wrapper
+cd powerlink-API
 ```
 
 ## Usage
@@ -53,7 +53,7 @@ fb.object(Type.ACCOUNT).getById("xxxx-xxxxx-xxxxx-xxxx");
 fb.object(Type.TASK).create({ subject: "New Task" });
 
 //Delete customer object 1004 record
-fb.object(1004).delete("xxxx-xxxxx-xxxxx-xxxx");
+fb.object("1004").delete("xxxx-xxxxx-xxxxx-xxxx");
 ```
 
 ## Features
