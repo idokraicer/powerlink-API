@@ -237,3 +237,5 @@ Contributions to the Powerlink JavaScript API Wrapper are welcome. Feel free to 
 ## License
 
 This project is licensed under the MIT License
+
+<a href="https://www.buymeacoffee.com/idanshr" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="buy me a coffee" width="200px"/></a>
