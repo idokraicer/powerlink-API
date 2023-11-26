@@ -5,11 +5,11 @@ This repository contains a JavaScript class designed for seamless interaction wi
 ## Table of Contents
 
 -   [Installation](#installation)
--   [Usage](#usage)
--   [Features](#features)
--   [Function Reference](#function-reference)
--   [Contributing](#contributing)
--   [License](#license)
+-   [Usage](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#usage)
+-   [Features](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#features)
+-   [Function Reference](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#function-reference)
+-   [Contributing](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#contributing)
+-   [License](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#license)
 
 ## Installation
 
@@ -17,10 +17,10 @@ Instructions on how to integrate this JavaScript class into a project:
 
 ```
 # Clone this repository
-git clone https://github.com/IdanSHR/powerlink-API.git
+git clone https://github.com/yourusername/powerlink-js-api-wrapper.git
 
 # Navigate to the cloned directory
-cd powerlink-API
+cd powerlink-js-api-wrapper
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ cd powerlink-API
 Basic usage instructions, like how to import and use the class:
 
 ```
-import Fireberry from './path/to/fireberry';
+import Fireberry from './path/to/Fireberry';
 ```
 
 or
@@ -52,8 +52,8 @@ fb.object(Type.ACCOUNT).getById("xxxx-xxxxx-xxxxx-xxxx");
 //Create new task
 fb.object(Type.TASK).create({ subject: "New Task" });
 
-//Delete custom object 1004 record
-fb.object("1004").delete("xxxx-xxxxx-xxxxx-xxxx");
+//Delete customer object 1004 record
+fb.object(1004).delete("xxxx-xxxxx-xxxxx-xxxx");
 ```
 
 ## Features
@@ -64,7 +64,171 @@ fb.object("1004").delete("xxxx-xxxxx-xxxxx-xxxx");
 
 ## Function Reference
 
-<table><thead><tr><th>Function</th><th>Options</th><th>Description</th></tr></thead><tbody><tr><td><code>create</code></td><td><code>data</code>: object</td><td>Creates a new record in the specified object.</td></tr><tr><td><code>getById</code></td><td><code>objectid</code>: string</td><td>Retrieves a record by its ID.</td></tr><tr><td><code>query</code></td><td><code>query</code>, <code>page_number</code>, <code>page_size</code>, <code>sort_type</code>, <code>sort_by</code></td><td>Queries records from the specified object.</td></tr><tr><td><code>queryOne</code></td><td><code>query</code>, <code>sort_type</code>, <code>sort_by</code></td><td>Retrieves the first record based on the query.</td></tr><tr><td><code>getAll</code></td><td><code>query</code>: string</td><td>Retrieves all records from the specified object.</td></tr><tr><td><code>update</code></td><td><code>objectid</code>: string, <code>newData</code>: object</td><td>Updates a record by its ID.</td></tr><tr><td><code>delete</code></td><td><code>objectid</code>: string</td><td>Deletes a record by its ID.</td></tr><tr><td><code>object</code></td><td><code>Type</code>: enum value</td><td>Returns an object with CRUD and query methods.</td></tr></tbody></table>
+### Objects()
+
+<table>
+    <thead>
+        <tr>
+            <th>Function </th>
+            <th>Options</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>()</code></td>
+            <td>None</td>
+            <td>Returns all object types available.</td>
+        </tr>
+        <tr>
+            <td><code>create</code></td>
+            <td><code>name</code>: string, <code>collectionname</code>: string</td>
+            <td>Creates a new object type with the specified name and collection name.</td>
+        </tr>
+        <tr>
+            <td><code>update</code></td>
+            <td><code>objecttype</code>: Type, <code>newData</code>: object</td>
+            <td>Updates an existing object type identified by the <code>objecttype</code> with the provided new data.</td>
+        </tr>
+        <tr>
+            <td><code>delete</code></td>
+            <td><code>objecttype</code>: Type</td>
+            <td>Deletes the specified object type.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Object (objectid: string)
+
+<table>
+    <thead>
+        <tr>
+            <th>Function </th>
+            <th>Options</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>  <td><code>create</code></td>  <td><code>data</code>: object</td>  <td>Creates a new record within the specified object type.</td>  </tr>  <tr>  <td><code>getAll</code></td>  <td>None</td>  <td>Retrieves all records from the specified object type.</td>  </tr>  <tr>  <td><code>get</code></td>  <td><code>objectid</code>: string</td>  <td>Retrieves a specific record by its ID from the specified object type.</td>  </tr>  <tr>  <td><code>update</code></td>  <td><code>objectid</code>: string, <code>newData</code>: object</td>  <td>Updates a specific record identified by its ID within the specified object type.</td>  </tr>  <tr>  <td><code>delete</code></td>  <td><code>objectid</code>: string</td>  <td>Deletes a specific record identified by its ID from the specified object type.</td>  </tr>  <tr>  <td><code>query</code></td>  <td><code>query</code>, <code>page_number</code>, <code>page_size</code>, <code>sort_type</code>, <code>sort_by</code></td>  <td>Performs a query on the specified object type with filtering, sorting, and pagination options.</td>  </tr>  <tr>  <td><code>queryOne</code></td>  <td><code>query</code>, <code>sort_type</code>, <code>sort_by</code></td>  <td>Fetches the first record based on the specified query and sorting criteria from the specified object type.</td>  </tr>
+    </tbody>
+    </table>
+
+### Fields()
+
+<table>
+    <thead>
+        <tr>
+            <th>Function </th>
+            <th>Options</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>  <td><code>()</code></td> <td>None</td> <td>Returns all fields available within the object.</td>  </tr>  <tr>  <td><code>create</code></td>  <td><code>fieldType</code>: string, <code>data</code>: object</td>  <td>Creates a new field of the specified type and data within the current object type.</td>  </tr>
+    </tbody>
+    </table>
+
+### Field (fieldid: string)
+
+<table>
+    <thead>
+        <tr>
+            <th>Function </th>
+            <th>Options</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>get</code></td>
+            <td>None</td>
+            <td>Retrieves details for a specific field within the given object type, identified by <code>fieldname</code>.</td>
+        </tr>
+        <tr>
+            <td><code>update <strong>(to be implemented)</strong></code></td>
+            <td>---</td>
+            <td>Updates the specific field within the given object type.</td>
+        </tr>
+        <tr>
+            <td><code>delete</code></td>
+            <td>None</td>
+            <td>Deletes the specific field within the given object type, identified by <code>fieldname</code>.</td>
+        </tr>
+        <tr>
+            <td><code>values</code></td>
+            <td>None</td>
+            <td>Retrieves the values for a specific field within the given object type, identified by <code>fieldname</code>.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Views()
+
+<table>
+    <thead>
+        <tr>
+            <th>Function</th>
+            <th>Options</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>()</code></td>
+            <td>None</td>
+            <td>Returns all views available within the object type.</td>
+        </tr>
+        <tr>
+            <td><code>create</code></td>
+            <td><code>name</code>: string</td>
+            <td>Creates a new view with the specified name for the current object type.</td>
+        </tr>
+    </tbody>
+</table>
+
+### View (viewid: string)
+
+<table>
+    <thead>
+        <tr>
+            <th>Function</th>
+            <th>Options</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>get</code></td>
+            <td>None</td>
+            <td>Retrieves details of the specific view identified by <code>viewid</code> within the current object type.</td>
+        </tr>
+        <tr>
+            <td><code>update</code></td>
+            <td><code>data</code>: object</td>
+            <td>Updates the specific view identified by <code>viewid</code> with the provided data.</td>
+        </tr>
+        <tr>
+            <td><code>delete</code></td>
+            <td>None</td>
+            <td>Deletes the specific view identified by <code>viewid</code> from the current object type.</td>
+        </tr>
+        <tr>
+            <td><code>duplicate</code></td>
+            <td>None</td>
+            <td>Duplicates the specific view identified by <code>viewid</code> for the current object type.</td>
+        </tr>
+        <tr>
+            <td><code>setFavorite</code></td>
+            <td>None</td>
+            <td>Sets the specific view identified by <code>viewid</code> as a favorite for the current object type.</td>
+        </tr>
+        <tr>
+            <td><code>removeFavorite</code></td>
+            <td>None</td>
+            <td>Removes the specific view identified by <code>viewid</code> from favorites for the current object type.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Contributing
 
