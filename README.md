@@ -5,11 +5,11 @@ This repository contains a JavaScript class designed for seamless interaction wi
 ## Table of Contents
 
 -   [Installation](#installation)
--   [Usage](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#usage)
--   [Features](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#features)
--   [Function Reference](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#function-reference)
--   [Contributing](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#contributing)
--   [License](https://chat.openai.com/c/3195179a-2fe1-4a20-9ca0-6466d5ee13a8#license)
+-   [Usage](#usage)
+-   [Features](#features)
+-   [Function Reference](#function-reference)
+-   [Contributing](#contributing)
+-   [License](#license)
 
 ## Installation
 
