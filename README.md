@@ -17,10 +17,10 @@ Instructions on how to integrate this JavaScript class into a project:
 
 ```
 # Clone this repository
-git clone https://github.com/yourusername/powerlink-js-api-wrapper.git
+git clone https://github.com/IdanSHR/powerlink-API.git
 
 # Navigate to the cloned directory
-cd powerlink-js-api-wrapper
+cd powerlink-API
 ```
 
 ## Usage
@@ -40,8 +40,12 @@ or
 <b>Example usages</b>
 
 ```
+//For servers
 const apiToken = 'YOUR_API_TOKEN';
 const fb = new Fireberry(apiToken);
+
+//For inside scripts
+const fb = new Fireberry():
 
 //Get all customers
 fb.object(Type.CUSTOMER).getAll();
