@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="fireberry.js"></script>
+    </head>
+    <body>
+        <script>
+            const fb = new Fireberry();
+            fb.object(Type.ACCOUNT).getAll().then((data) => {
+                console.log(data);
+            });
+        </script>
+    </body>
+</html>

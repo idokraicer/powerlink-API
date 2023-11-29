@@ -1,72 +1,74 @@
-let Type;
-(function (Type) {
-    Type[(Type["ACCOUNT"] = 1)] = "ACCOUNT";
-    Type[(Type["CONTACT"] = 2)] = "CONTACT";
-    Type[(Type["INVOICEITEM"] = 79)] = "INVOICEITEM";
-    Type[(Type["FACEBOOKCONNECTION"] = 107)] = "FACEBOOKCONNECTION";
-    Type[(Type["PROVIDERVERIFICATION"] = 111)] = "PROVIDERVERIFICATION";
-    Type[(Type["UI"] = 112)] = "UI";
-    Type[(Type["AUDITLOG"] = 109)] = "AUDITLOG";
-    Type[(Type["RECORDLAYOUT"] = 108)] = "RECORDLAYOUT";
-    Type[(Type["WFRULE"] = 55)] = "WFRULE";
-    Type[(Type["CRMORDER"] = 13)] = "CRMORDER";
-    Type[(Type["CONTRACT"] = 28)] = "CONTRACT";
-    Type[(Type["INVOICECREDIT"] = 85)] = "INVOICECREDIT";
-    Type[(Type["INVOICENO"] = 81)] = "INVOICENO";
-    Type[(Type["INVOICERENO"] = 84)] = "INVOICERENO";
-    Type[(Type["INVOICEDRAFT"] = 82)] = "INVOICEDRAFT";
-    Type[(Type["ACTIVITYLOG"] = 102)] = "ACTIVITYLOG";
-    Type[(Type["DASHBOARD"] = 92)] = "DASHBOARD";
-    Type[(Type["ARTICLE"] = 76)] = "ARTICLE";
-    Type[(Type["PRODUCT"] = 14)] = "PRODUCT";
-    Type[(Type["OPPORTUNITY"] = 4)] = "OPPORTUNITY";
-    Type[(Type["CALENDARRESOURCE"] = 114)] = "CALENDARRESOURCE";
-    Type[(Type["TASK"] = 10)] = "TASK";
-    Type[(Type["COMPETITOR"] = 8)] = "COMPETITOR";
-    Type[(Type["ACTIVITY"] = 6)] = "ACTIVITY";
-    Type[(Type["PROJECT"] = 46)] = "PROJECT";
-    Type[(Type["INVOICERECEIPTITEM"] = 80)] = "INVOICERECEIPTITEM";
-    Type[(Type["TRANSACTIONITEM"] = 90)] = "TRANSACTIONITEM";
-    Type[(Type["INVOICERECEIPT"] = 83)] = "INVOICERECEIPT";
-    Type[(Type["CAMPAIGN"] = 67)] = "CAMPAIGN";
-    Type[(Type["CASES"] = 5)] = "CASES";
-    Type[(Type["ACCOUNTPRODUCT"] = 33)] = "ACCOUNTPRODUCT";
-    Type[(Type["CALLLOG"] = 100)] = "CALLLOG";
-    Type[(Type["ATTENDANCECLOCK"] = 101)] = "ATTENDANCECLOCK";
-    Type[(Type["INVOICE"] = 78)] = "INVOICE";
-    Type[(Type["INVOICEDELIVERY"] = 86)] = "INVOICEDELIVERY";
-    Type[(Type["CONVERSATION"] = 104)] = "CONVERSATION";
-    Type[(Type["WIDGET"] = 75)] = "WIDGET";
-    Type[(Type["EMAILMESSAGE"] = 103)] = "EMAILMESSAGE";
-    Type[(Type["NOTE"] = 7)] = "NOTE";
-    Type[(Type["IPRESTRICTION"] = 89)] = "IPRESTRICTION";
-    Type[(Type["ROLE"] = 64)] = "ROLE";
-    Type[(Type["BUSINESSUNIT"] = 23)] = "BUSINESSUNIT";
-    Type[(Type["LINK"] = 77)] = "LINK";
-    Type[(Type["CRMUSERLOGIN"] = 70)] = "CRMUSERLOGIN";
-    Type[(Type["DOC"] = 11)] = "DOC";
-    Type[(Type["CRMUSER"] = 9)] = "CRMUSER";
-    Type[(Type["CRMORDERITEM"] = 17)] = "CRMORDERITEM";
-    Type[(Type["ORG"] = 25)] = "ORG";
-    Type[(Type["MDOBJECT"] = 58)] = "MDOBJECT";
-    Type[(Type["SYSTEMFIELD"] = 73)] = "SYSTEMFIELD";
-    Type[(Type["SMSTEMPLATE"] = 110)] = "SMSTEMPLATE";
-    Type[(Type["PRINTTEMPLATE"] = 27)] = "PRINTTEMPLATE";
-    Type[(Type["TEXTTEMPLATE"] = 106)] = "TEXTTEMPLATE";
-    Type[(Type["TEAMINBOX"] = 105)] = "TEAMINBOX";
-    Type[(Type["VIEWDESIGNER"] = 30)] = "VIEWDESIGNER";
-})(Type || (Type = {}));
+export const enum Type {
+    ACCOUNT = 1,
+    CONTACT = 2,
+    INVOICEITEM = 79,
+    FACEBOOKCONNECTION = 107,
+    PROVIDERVERIFICATION = 111,
+    UI = 112,
+    AUDITLOG = 109,
+    RECORDLAYOUT = 108,
+    WFRULE = 55,
+    CRMORDER = 13,
+    CONTRACT = 28,
+    INVOICECREDIT = 85,
+    INVOICENO = 81,
+    INVOICERENO = 84,
+    INVOICEDRAFT = 82,
+    ACTIVITYLOG = 102,
+    DASHBOARD = 92,
+    ARTICLE = 76,
+    PRODUCT = 14,
+    OPPORTUNITY = 4,
+    CALENDARRESOURCE = 114,
+    TASK = 10,
+    COMPETITOR = 8,
+    ACTIVITY = 6,
+    PROJECT = 46,
+    INVOICERECEIPTITEM = 80,
+    TRANSACTIONITEM = 90,
+    INVOICERECEIPT = 83,
+    CAMPAIGN = 67,
+    CASES = 5,
+    ACCOUNTPRODUCT = 33,
+    CALLLOG = 100,
+    ATTENDANCECLOCK = 101,
+    INVOICE = 78,
+    INVOICEDELIVERY = 86,
+    CONVERSATION = 104,
+    WIDGET = 75,
+    EMAILMESSAGE = 103,
+    NOTE = 7,
+    IPRESTRICTION = 89,
+    ROLE = 64,
+    BUSINESSUNIT = 23,
+    LINK = 77,
+    CRMUSERLOGIN = 70,
+    DOC = 11,
+    CRMUSER = 9,
+    CRMORDERITEM = 17,
+    ORG = 25,
+    MDOBJECT = 58,
+    SYSTEMFIELD = 73,
+    SMSTEMPLATE = 110,
+    PRINTTEMPLATE = 27,
+    TEXTTEMPLATE = 106,
+    TEAMINBOX = 105,
+    VIEWDESIGNER = 30,
+}
 
-class Fireberry {
-    constructor(apiToken) {
+export class Fireberry {
+    private apiToken?: string;
+    private baseUrl: string;
+
+    constructor(apiToken?: string) {
         this.apiToken = apiToken;
         this.baseUrl = apiToken ? "https://api.fireberry.com" : "";
     }
 
     //Utils
-    async sendRequest(url, method, data = {}) {
+    private async sendRequest(url: string, method: string, data: any = {}): Promise<{ data?: any; error?: boolean }> {
         try {
-            const headers = {
+            const headers: any = {
                 "Content-Type": "application/json",
             };
 
@@ -75,7 +77,7 @@ class Fireberry {
                 headers["tokenid"] = this.apiToken;
             }
 
-            let options = {
+            let options: any = {
                 method,
                 mode: "cors",
                 cache: "no-cache",
@@ -99,7 +101,7 @@ class Fireberry {
             return { error: true };
         }
     }
-    validateInputs(args) {
+    private validateInputs(args: { [key: string]: any }) {
         for (let key in args) {
             if (!args[key]) {
                 console.error(`${key} is required`);
@@ -110,23 +112,20 @@ class Fireberry {
     }
 
     //ObjectTypes
-    async createObjectType(name, collectionname) {
+    private async createObjectType(name: string, collectionname: string) {
         if (!this.validateInputs({ name, collectionname })) {
             return null;
         }
 
         const url = `${this.baseUrl}/api/v2/record/58`;
-        const dataResponse = await this.sendRequest(url, "POST", {
-            name,
-            collectionname,
-        });
+        const dataResponse = await this.sendRequest(url, "POST", { name, collectionname });
         if (dataResponse.error) {
             return null;
         }
         const { record } = dataResponse.data;
         return record;
     }
-    async updateObjectType(objecttype, data) {
+    private async updateObjectType(objecttype: Type, data: { name?: string; collectionname?: string }) {
         if (!this.validateInputs({ objecttype, data })) {
             return null;
         }
@@ -139,7 +138,7 @@ class Fireberry {
         const { record } = dataResponse.data;
         return record;
     }
-    async deleteObjectType(objecttype) {
+    private async deleteObjectType(objecttype: Type) {
         if (!this.validateInputs({ objecttype })) {
             return null;
         }
@@ -148,7 +147,7 @@ class Fireberry {
         return await this.sendRequest(url, "DELETE");
     }
     //Objects
-    async createObject(objecttype, data) {
+    private async createObject(objecttype: Type, data: any) {
         if (!this.validateInputs({ objecttype, data })) {
             return null;
         }
@@ -161,7 +160,7 @@ class Fireberry {
         const { Record } = dataResponse.data.data;
         return Record;
     }
-    async getAllObjects() {
+    private async getAllObjects() {
         const url = `${this.baseUrl}/metadata/records`;
         const dataResponse = await this.sendRequest(url, "GET");
         if (dataResponse.error) {
@@ -170,7 +169,7 @@ class Fireberry {
         const { data } = dataResponse.data || { data: [] };
         return data;
     }
-    async updateObject(objecttype, objectid, data) {
+    private async updateObject(objecttype: Type, objectid: string, data: any) {
         if (!this.validateInputs({ objecttype, objectid, data })) {
             return null;
         }
@@ -182,7 +181,7 @@ class Fireberry {
         const { record } = dataResponse.data;
         return record;
     }
-    async deleteObject(objecttype, objectid) {
+    private async deleteObject(objecttype: Type, objectid: string) {
         if (!this.validateInputs({ objecttype, objectid })) {
             return null;
         }
@@ -190,9 +189,9 @@ class Fireberry {
         const url = `${this.baseUrl}/api/record/${objecttype}/${objectid}`;
         return await this.sendRequest(url, "DELETE");
     }
-    async getObjectData(objecttype, query = "", page_number = 1, page_size = 500, sort_type = "desc", sort_by = "createdon", accumulator = []) {
+    private async getObjectData(objecttype: Type, query = "", page_number = 1, page_size = 500, sort_type = "desc", sort_by = "createdon", accumulator: any[] = []): Promise<any[]> {
         if (!this.validateInputs({ objecttype })) {
-            return null;
+            return [];
         }
 
         const url = `${this.baseUrl}/api/query`;
@@ -216,7 +215,7 @@ class Fireberry {
             return [...accumulator, ...Data];
         }
     }
-    async getFirst(objecttype, query = "", sort_type = "desc", sort_by = "createdon") {
+    private async getFirst(objecttype: Type, query = "", sort_type = "desc", sort_by = "createdon") {
         if (!this.validateInputs({ objecttype })) {
             return null;
         }
@@ -224,16 +223,13 @@ class Fireberry {
         const data = await this.getObjectData(objecttype, query, 1, 1, sort_type, sort_by);
         return data[0] || null;
     }
-    async getById(objecttype, objectid) {
+    private async getById(objecttype: Type, objectid: string) {
         if (!this.validateInputs({ objecttype, objectid })) {
             return null;
         }
 
         const url = `${this.baseUrl}/api/record/${objecttype}/${objectid}`;
-        const dataResponse = await this.sendRequest(url, "GET", {
-            objecttype,
-            objectid,
-        });
+        const dataResponse = await this.sendRequest(url, "GET", { objecttype, objectid });
         if (!dataResponse || dataResponse.error) {
             return null;
         }
@@ -242,7 +238,7 @@ class Fireberry {
     }
 
     //Fields
-    async createField(objecttype, fieldType, data) {
+    private async createField(objecttype: Type, fieldType: string, data: { fieldName: string; label: string }) {
         if (!this.validateInputs({ objecttype, fieldType, data })) {
             return null;
         }
@@ -256,7 +252,7 @@ class Fireberry {
         const { systemField } = dataResponse.data.data;
         return systemField;
     }
-    async updateField(objecttype, fieldid, data) {
+    private async updateField(objecttype: Type, fieldid: string, data: { label?: string; autoComplete?: boolean; defaultValue?: string; follow?: boolean; maxLength?: number }) {
         if (!this.validateInputs({ objecttype, fieldid, data })) {
             return null;
         }
@@ -274,25 +270,21 @@ class Fireberry {
         const { systemField } = dataResponse.data.data;
         return systemField;
     }
-    async getObjectField(objecttype, fieldname = "", values = false) {
+    private async getObjectField(objecttype: Type, fieldname = "", values = false) {
         if (!this.validateInputs({ objecttype })) {
             return null;
         }
 
         const url = fieldname === "" ? `${this.baseUrl}/metadata/records/${objecttype}/fields` : `${this.baseUrl}/metadata/records/${objecttype}/fields/${fieldname}/values`;
 
-        const dataResponse = await this.sendRequest(url, "GET", {
-            objecttype,
-            fieldname,
-            values,
-        });
+        const dataResponse = await this.sendRequest(url, "GET", { objecttype, fieldname, values });
         if (dataResponse.error) {
             return [];
         }
         const { data } = dataResponse.data || { data: [] };
         return values ? data?.values || [] : data;
     }
-    deleteObjectField(objecttype, fieldname) {
+    private deleteObjectField(objecttype: Type, fieldname: string) {
         if (!this.validateInputs({ objecttype, fieldname })) {
             return null;
         }
@@ -302,7 +294,7 @@ class Fireberry {
     }
 
     //Views
-    async createView(objecttype, name) {
+    private async createView(objecttype: Type, name: string) {
         if (!this.validateInputs({ objecttype, name })) {
             return null;
         }
@@ -314,7 +306,7 @@ class Fireberry {
         }
         return dataResponse.data;
     }
-    async getAllViews(objecttype) {
+    private async getAllViews(objecttype: Type) {
         if (!this.validateInputs({ objecttype })) {
             return null;
         }
@@ -326,7 +318,7 @@ class Fireberry {
         const { views } = dataResponse.data || { Views: [] };
         return views;
     }
-    async getView(objecttype, viewid) {
+    private async getView(objecttype: Type, viewid: string) {
         if (!this.validateInputs({ objecttype, viewid })) {
             return null;
         }
@@ -338,7 +330,7 @@ class Fireberry {
         }
         return dataResponse.data;
     }
-    async updateView(objecttype, viewid, data) {
+    private async updateView(objecttype: Type, viewid: string, data: any) {
         if (!this.validateInputs({ objecttype, viewid, data })) {
             return null;
         }
@@ -350,7 +342,7 @@ class Fireberry {
         }
         return dataResponse.data;
     }
-    async deleteView(objecttype, viewid) {
+    private async deleteView(objecttype: Type, viewid: string) {
         if (!this.validateInputs({ objecttype, viewid })) {
             return null;
         }
@@ -358,7 +350,7 @@ class Fireberry {
         const url = `${this.baseUrl}/api/v2/views/${objecttype}/${viewid}`;
         return await this.sendRequest(url, "DELETE");
     }
-    async duplicateView(objecttype, viewid) {
+    private async duplicateView(objecttype: Type, viewid: string) {
         if (!this.validateInputs({ objecttype, viewid })) {
             return null;
         }
@@ -370,7 +362,7 @@ class Fireberry {
         }
         return dataResponse.data;
     }
-    async setFavoriteView(objecttype, viewid) {
+    private async setFavoriteView(objecttype: Type, viewid: string) {
         if (!this.validateInputs({ objecttype, viewid })) {
             return null;
         }
@@ -382,7 +374,7 @@ class Fireberry {
         }
         return dataResponse.data;
     }
-    async removeFavoriteView(objecttype, viewid) {
+    private async removeFavoriteView(objecttype: Type, viewid: string) {
         if (!this.validateInputs({ objecttype, viewid })) {
             return null;
         }
@@ -399,31 +391,31 @@ class Fireberry {
         const resultPromise = this.getAllObjects();
         return {
             then: resultPromise.then.bind(resultPromise),
-            create: async (name, collectionname) => this.createObjectType(name, collectionname),
-            update: async (objecttype, newData) => this.updateObjectType(objecttype, newData),
-            delete: async (objecttype) => this.deleteObjectType(objecttype),
+            create: async (name: string, collectionname: string) => this.createObjectType(name, collectionname),
+            update: async (objecttype: Type, newData: any) => this.updateObjectType(objecttype, newData),
+            delete: async (objecttype: Type) => this.deleteObjectType(objecttype),
         };
     }
-    object(objecttype) {
+    object(objecttype: Type) {
         return {
-            create: async (data) => this.createObject(objecttype, data),
+            create: async (data: any) => this.createObject(objecttype, data),
             getAll: async () => this.getObjectData(objecttype),
-            get: async (objectid) => this.getById(objecttype, objectid),
-            update: async (objectid, newData) => this.updateObject(objecttype, objectid, newData),
-            delete: async (objectid) => this.deleteObject(objecttype, objectid),
+            get: async (objectid: string) => this.getById(objecttype, objectid),
+            update: async (objectid: string, newData: any) => this.updateObject(objecttype, objectid, newData),
+            delete: async (objectid: string) => this.deleteObject(objecttype, objectid),
             query: async (query = "", page_number = 1, page_size = 500, sort_type = "desc", sort_by = "createdon") => this.getObjectData(objecttype, query, page_number, page_size, sort_type, sort_by),
             queryOne: async (query = "", sort_type = "desc", sort_by = "createdon") => this.getFirst(objecttype, query, sort_type, sort_by),
             fields: () => {
                 const resultPromise = this.getObjectField(objecttype);
                 return {
                     then: resultPromise.then.bind(resultPromise),
-                    create: async (fieldType, data) => this.createField(objecttype, fieldType, data),
+                    create: async (fieldType: string, data: any) => this.createField(objecttype, fieldType, data),
                 };
             },
-            field: (fieldname) => {
+            field: (fieldname: string) => {
                 return {
                     get: async () => this.getObjectField(objecttype, fieldname),
-                    // update: async () => {},
+                    update: async () => this.updateField(objecttype, fieldname, {}),
                     delete: async () => this.deleteObjectField(objecttype, fieldname),
                     values: async () => this.getObjectField(objecttype, fieldname, true),
                 };
@@ -432,13 +424,13 @@ class Fireberry {
                 const resultPromise = this.getAllViews(objecttype);
                 return {
                     then: resultPromise.then.bind(resultPromise),
-                    create: async (name) => this.createView(objecttype, name),
+                    create: async (name: string) => this.createView(objecttype, name),
                 };
             },
-            view: (viewid) => {
+            view: (viewid: string) => {
                 return {
                     get: async () => this.getView(objecttype, viewid),
-                    update: async (data) => this.updateView(objecttype, viewid, data),
+                    update: async (data: any) => this.updateView(objecttype, viewid, data),
                     delete: async () => this.deleteView(objecttype, viewid),
                     duplicate: async () => this.duplicateView(objecttype, viewid),
                     setFavorite: async () => this.setFavoriteView(objecttype, viewid),
